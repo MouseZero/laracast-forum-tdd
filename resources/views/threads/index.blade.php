@@ -8,7 +8,7 @@
                     <div class="panel-heading">Threads</div>
                     <div class="panel-body">
                         @foreach ($threads as $thread)
-                            <div class="artical">
+                            <div class="article">
                                 <a href="/threads/{{$thread->id}}">
                                     {{ $thread->title }}
                                 </a>
