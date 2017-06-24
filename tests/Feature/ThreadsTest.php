@@ -18,25 +18,22 @@ class ThreadsTest extends TestCase
 
     public function test_a_user_can_browse_threads()
     {
-        $response = $this->get('/threads');
-
-        $response->assertStatus(200);
-        $response->assertSee($this->thread->title);
+         $this->get('/threads')
+            ->assertStatus(200)
+            ->assertSee($this->thread->title);
     }
 
     public function test_a_user_can_browse_a_single_thread()
     {
-        $response = $this->get('/threads/' . $this->thread->id);
-
-        $response->assertSee($this->thread->title);
+        $this->get('/threads/' . $this->thread->id)
+            ->assertSee($this->thread->title);
     }
 
     public function test_replys_showup_in_single_thread()
     {
         $reply = factory('App\Reply')->create(['thread_id' => $this->thread->id]);
 
-        $response = $this->get('/threads/' . $this->thread->id);
-
-        $response->assertSee($reply->body);
+        $this->get('/threads/' . $this->thread->id)
+            ->assertSee($reply->body);
     }
 }

@@ -20,8 +20,17 @@
                 <h2>Replies</h2>
                 @foreach ($replies as $reply)
                     <div class="panel panel-default replies">
-                        {{$reply->body}}
-                        <p>&nbsp;</p>
+                        <div class="panel-body">
+
+                            <h4>
+                                <a href=#>
+                                    {{$reply->owner->name}}
+                                </a>
+                                &nbsp;::::&nbsp;
+                                {{$reply->created_at->diffForHumans()}}
+                            </h4>
+                            {{$reply->body}}
+                        </div>
                     </div>
                 @endforeach
             </div>
