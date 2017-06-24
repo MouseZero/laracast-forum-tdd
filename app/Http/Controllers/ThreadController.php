@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Thread;
+use App\Reply;
 use Illuminate\Http\Request;
 
 class ThreadController extends Controller
@@ -47,7 +48,8 @@ class ThreadController extends Controller
      */
     public function show(Thread $thread)
     {
-        return view('threads.show', compact('thread'));
+        $replies = Reply::where('thread_id', $thread->id)->get();
+        return view('threads.show', compact('thread', 'replies'));
     }
 
     /**
